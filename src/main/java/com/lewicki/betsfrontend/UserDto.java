@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -21,12 +23,20 @@ public class UserDto {
     @JsonProperty("password")
     private String password;
 
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    @JsonProperty("email")
+    private String email;
+
+    @JsonProperty("createTime")
+    private LocalDateTime createTime;
+
+    @JsonProperty("loggedIn")
+    private boolean loggedIn;
+
+    public UserDto(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
     }
+
+
 }
