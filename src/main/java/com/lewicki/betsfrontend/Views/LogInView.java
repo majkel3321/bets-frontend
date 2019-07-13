@@ -8,31 +8,26 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Route("signin")
-public class SignInView extends VerticalLayout {
+@Route("login")
+public class LogInView extends VerticalLayout {
 
     private TextField textFieldPassword = new TextField();
     private TextField textFieldUsername = new TextField();
-    private TextField textFieldEmail = new TextField();
-    private Button buttonCreate = new Button("Submit");
-    private Span spanSignIn = new Span("Sign In");
-
+    private Span spanLogIn = new Span("Log In");
+    private Button buttonLogIn = new Button("log in");
     @Autowired
     BetsClient betsClient;
 
-    public SignInView(){
-        spanSignIn.getElement().getStyle().set("font-size","100px");
+
+    public LogInView(){
+        buttonLogIn.addClickListener(event -> betsClient.logIn(textFieldUsername.getValue(),textFieldPassword.getValue()));
+        spanLogIn.getElement().getStyle().set("font-size","100px");
         textFieldPassword.setPlaceholder("password");
         textFieldUsername.setPlaceholder("username");
-        textFieldEmail.setPlaceholder("email");
-        buttonCreate.addClickListener(event -> betsClient.createUser(textFieldUsername.getValue(),
-                textFieldPassword.getValue(),textFieldEmail.getValue()));
-
-        add(spanSignIn);
-        add(textFieldEmail);
+        add(spanLogIn);
         add(textFieldUsername);
         add(textFieldPassword);
-        add(buttonCreate);
+        add(buttonLogIn);
         setAlignItems(Alignment.CENTER);
     }
 }
