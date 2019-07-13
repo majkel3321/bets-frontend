@@ -26,6 +26,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     compileOnly 'org.projectlombok:lombok'
+    compile group: 'com.vaadin', name: 'vaadin-themes', version: '8.8.5'
 
 }
 
