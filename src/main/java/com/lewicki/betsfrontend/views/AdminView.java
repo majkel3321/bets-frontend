@@ -1,7 +1,7 @@
-package com.lewicki.betsfrontend.Views;
+package com.lewicki.betsfrontend.views;
 
-import com.lewicki.betsfrontend.BetsClient;
-import com.lewicki.betsfrontend.UserDto;
+import com.lewicki.betsfrontend.client.UserClient;
+import com.lewicki.betsfrontend.domain.UserDto;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -15,10 +15,10 @@ public class AdminView extends VerticalLayout {
     private Grid<UserDto> gridUsers = new Grid<>(UserDto.class);
 
     @Autowired
-    BetsClient betsClient;
+    UserClient userClient;
 
     public AdminView(){
-        buttonShowUsers.addClickListener(event -> gridUsers.setItems(betsClient.getUsers()));
+        buttonShowUsers.addClickListener(event -> gridUsers.setItems(userClient.getUsers()));
         gridUsers.setColumns("id","username","password","email","createTime","loggedIn");
         add(gridUsers);
         add(buttonShowUsers);

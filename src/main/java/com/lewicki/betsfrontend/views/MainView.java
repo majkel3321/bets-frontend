@@ -1,6 +1,6 @@
-package com.lewicki.betsfrontend.Views;
+package com.lewicki.betsfrontend.views;
 
-import com.lewicki.betsfrontend.BetsClient;
+import com.lewicki.betsfrontend.client.UserClient;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Span;
@@ -21,19 +21,18 @@ public class MainView extends VerticalLayout {
     private Div div = new Div();
 
     @Autowired
-    BetsClient betsClient;
+    UserClient userClient;
 
 
     public MainView() {
         buttonSignIn.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("signin")));
         buttonLogIn.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("login")));
+        buttonMatches.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("matches")));
 
         spanBets.getElement().getStyle().set("font-size", "100px");
-        div.add(buttonSignIn, buttonLogIn,buttonLogOut, buttonMatches, buttonProfile);
+        div.add(buttonSignIn, buttonLogIn, buttonLogOut, buttonMatches, buttonProfile);
         div.setMaxWidth("20px");
         add(spanBets);
         add(div);
     }
-
-    //    buttonSecondView.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("second")));
 }

@@ -1,6 +1,6 @@
-package com.lewicki.betsfrontend.Views;
+package com.lewicki.betsfrontend.views;
 
-import com.lewicki.betsfrontend.BetsClient;
+import com.lewicki.betsfrontend.client.UserClient;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -18,14 +18,14 @@ public class SignInView extends VerticalLayout {
     private Span spanSignIn = new Span("Sign In");
 
     @Autowired
-    BetsClient betsClient;
+    UserClient userClient;
 
     public SignInView(){
         spanSignIn.getElement().getStyle().set("font-size","100px");
         textFieldPassword.setPlaceholder("password");
         textFieldUsername.setPlaceholder("username");
         textFieldEmail.setPlaceholder("email");
-        buttonCreate.addClickListener(event -> betsClient.createUser(textFieldUsername.getValue(),
+        buttonCreate.addClickListener(event -> userClient.createUser(textFieldUsername.getValue(),
                 textFieldPassword.getValue(),textFieldEmail.getValue()));
 
         add(spanSignIn);

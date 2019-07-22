@@ -1,4 +1,4 @@
-package com.lewicki.betsfrontend;
+package com.lewicki.betsfrontend.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,6 +37,4 @@ public class UserDto {
         this.password = password;
         this.email = email;
     }
-
-
 }

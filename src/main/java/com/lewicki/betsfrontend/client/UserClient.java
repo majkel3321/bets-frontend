@@ -1,5 +1,6 @@
-package com.lewicki.betsfrontend;
+package com.lewicki.betsfrontend.client;
 
+import com.lewicki.betsfrontend.domain.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Component;
@@ -10,13 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class BetsClient {
+public class UserClient {
 
     @Autowired
     private RestTemplate restTemplate;
-
-    private UserDto loggerUser;
-
 
     public List<UserDto> getUsers() {
         UserDto[] usersResponse = restTemplate.getForObject("http://localhost:8080/user/getUsers", UserDto[].class);
@@ -29,12 +27,12 @@ public class BetsClient {
         restTemplate.postForObject("http://localhost:8080/user/createUser", entity, UserDto.class);
     }
 
-    public void logIn(String username, String password){
+    public void logIn(String username, String password) {
         String url = "http://localhost:8080/user/login";
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url)
-                .queryParam("username",username)
-                .queryParam("password",password);
+                .queryParam("username", username)
+                .queryParam("password", password);
 
-        restTemplate.put(builder.toUriString(),UserDto.class);
+        restTemplate.put(builder.toUriString(), UserDto.class);
     }
 }
