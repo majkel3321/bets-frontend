@@ -25,7 +25,7 @@ public class MainView extends VerticalLayout {
 
 
     public MainView() {
-        buttonSignIn.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("signin")));
+        /*buttonSignIn.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("signin")));
         buttonLogIn.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("login")));
         buttonMatches.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("matches")));
 
@@ -33,6 +33,7 @@ public class MainView extends VerticalLayout {
         div.add(buttonSignIn, buttonLogIn, buttonLogOut, buttonMatches, buttonProfile);
         div.setMaxWidth("20px");
         add(spanBets);
-        add(div);
+        add(div);*/
+        add(Panel.getPanel());
     }
 }

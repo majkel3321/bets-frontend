@@ -27,7 +27,7 @@ public class SignInView extends VerticalLayout {
         textFieldEmail.setPlaceholder("email");
         buttonCreate.addClickListener(event -> userClient.createUser(textFieldUsername.getValue(),
                 textFieldPassword.getValue(),textFieldEmail.getValue()));
-
+        add(Panel.getPanel());
         add(spanSignIn);
         add(textFieldEmail);
         add(textFieldUsername);

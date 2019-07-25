@@ -24,6 +24,7 @@ public class LogInView extends VerticalLayout {
         spanLogIn.getElement().getStyle().set("font-size","100px");
         textFieldPassword.setPlaceholder("password");
         textFieldUsername.setPlaceholder("username");
+        add(Panel.getPanel());
         add(spanLogIn);
         add(textFieldUsername);
         add(textFieldPassword);

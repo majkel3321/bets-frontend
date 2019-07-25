@@ -20,7 +20,6 @@ public class MatchesView extends VerticalLayout {
     public MatchesView(){
         buttonShowMatches.addClickListener(event -> gridMatch.setItems(matchClient.getMatches()));
         gridMatch.setColumns("homeTeam","awayTeam","v1","x","v2");
-        add(gridMatch);
-        add(buttonShowMatches);
+        add(gridMatch,buttonShowMatches);
     }
 }
