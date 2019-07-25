@@ -1,4 +1,4 @@
-package com.lewicki.betsfrontend;
+package com.lewicki.betsfrontend.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
