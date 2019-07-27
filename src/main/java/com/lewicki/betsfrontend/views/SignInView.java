@@ -25,9 +25,10 @@ public class SignInView extends VerticalLayout {
         textFieldPassword.setPlaceholder("password");
         textFieldUsername.setPlaceholder("username");
         textFieldEmail.setPlaceholder("email");
-        buttonCreate.addClickListener(event -> userClient.createUser(textFieldUsername.getValue(),
-                textFieldPassword.getValue(),textFieldEmail.getValue()));
-        add(Panel.getPanel());
+        buttonCreate.addClickListener(event -> {
+            userClient.createUser(textFieldUsername.getValue(), textFieldPassword.getValue(),textFieldEmail.getValue());
+            getUI().ifPresent(ui -> ui.navigate("profile"));
+        });
         add(spanSignIn);
         add(textFieldEmail);
         add(textFieldUsername);

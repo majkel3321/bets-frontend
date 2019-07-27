@@ -32,6 +32,9 @@ public class UserDto {
     @JsonProperty("loggedIn")
     private boolean loggedIn;
 
+    @JsonProperty("balance")
+    private double balance;
+
     public UserDto(String username, String password, String email) {
         this.username = username;
         this.password = password;

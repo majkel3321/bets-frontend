@@ -22,7 +22,6 @@ public class LeagueClient {
                 .queryParam("name",name);
 
         TeamDto[] teams = restTemplate.getForObject(builder.toUriString(),TeamDto[].class);
-        System.out.println("+++++++++++++++" + builder.toUriString() + "+++++++++++++");
         return Arrays.asList(teams);
     }
 
@@ -32,7 +31,6 @@ public class LeagueClient {
                 .queryParam("name",name);
 
         PlayerDto[] players = restTemplate.getForObject(builder.toUriString(),PlayerDto[].class);
-        System.out.println("+++++++++++++++" + builder.toUriString() + "+++++++++++++");
         return Arrays.asList(players);
     }
 }

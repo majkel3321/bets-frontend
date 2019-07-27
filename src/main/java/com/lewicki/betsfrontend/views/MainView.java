@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Route
 public class MainView extends VerticalLayout {
 
-    private Button buttonProfile = new Button("Profile");
+    private Button buttonProfile = new Button("ProfileView");
     private Button buttonMatches = new Button("Matches");
     private Button buttonSignIn = new Button("Sign in");
     private Button buttonLogIn = new Button("Log in");
@@ -25,15 +25,6 @@ public class MainView extends VerticalLayout {
 
 
     public MainView() {
-        /*buttonSignIn.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("signin")));
-        buttonLogIn.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("login")));
-        buttonMatches.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("matches")));
-
-        spanBets.getElement().getStyle().set("font-size", "100px");
-        div.add(buttonSignIn, buttonLogIn, buttonLogOut, buttonMatches, buttonProfile);
-        div.setMaxWidth("20px");
-        add(spanBets);
-        add(div);*/
         add(Panel.getPanel());
     }
 }

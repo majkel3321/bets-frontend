@@ -26,6 +26,7 @@ public class TeamView extends VerticalLayout {
     private ComboBox<String> selectLeague = new ComboBox<>("select league");
     private ComboBox<String> selectTeam = new ComboBox<>("select team");
 
+
     @Autowired
     private LeagueClient leagueClient;
 

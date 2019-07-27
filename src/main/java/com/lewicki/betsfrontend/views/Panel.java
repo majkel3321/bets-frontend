@@ -7,7 +7,6 @@ import com.vaadin.flow.component.applayout.AppLayoutMenuItem;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.VaadinIcon;
 
 public class Panel {
 
@@ -18,10 +17,9 @@ public class Panel {
         img.setHeight("60px");
         appLayout.setBranding(img);
 
-        menu.addMenuItems(new AppLayoutMenuItem(VaadinIcon.USER.create(),"Matches", "matches"),
-                new AppLayoutMenuItem("Log In", "login"),
-                new AppLayoutMenuItem(VaadinIcon.SIGN_IN.create(),"Sing in", "signin"),
+        menu.addMenuItems(new AppLayoutMenuItem("Matches", "matches"),
                 new AppLayoutMenuItem("Teams", "team"),
+                new AppLayoutMenuItem("Profile", "profile"),
                 new AppLayoutMenuItem("Admin", "admin"));
 
         Component content = new Span(new H3("CRUD Api"),
