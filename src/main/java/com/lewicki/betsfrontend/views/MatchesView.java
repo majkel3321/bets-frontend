@@ -25,9 +25,11 @@ public class MatchesView extends HorizontalLayout {
     private Button buttonCreateBet = new Button("create bet");
     private ComboBox<String> comboBoxTeams = new ComboBox<>("select match");
     private ComboBox<String> comboBoxBet = new ComboBox<>("select result");
+    private ComboBox<String> comboBoxLeagues = new ComboBox<>("select league");
     private TextField textFieldAmount = new TextField("amount");
     private List<String> homeVsAway = new ArrayList<>();
     private List<String> results = new ArrayList<>();
+    private List<String> leagues = new ArrayList<>();
     private List<MatchDto> matches = new ArrayList<>();
     private MatchDto chosenMatch;
 
@@ -44,12 +46,22 @@ public class MatchesView extends HorizontalLayout {
         results.add("v1");
         results.add("x");
         results.add("v2");
-        VerticalLayout verticalLayout = new VerticalLayout(gridMatch, buttonShowMatches);
+
+        leagues.add("soccer_china_superleague");
+        leagues.add("soccer_denmark_superliga");
+        leagues.add("soccer_belgium_first_div");
+        leagues.add("soccer_japan_j_league");
+        leagues.add("soccer_netherlands_eredivisie");
+        leagues.add("soccer_norway_eliteserien");
+        leagues.add("soccer_russia_premier_league");
+
+        comboBoxLeagues.setItems(leagues);
+        VerticalLayout verticalLayout = new VerticalLayout(gridMatch, comboBoxLeagues, buttonShowMatches);
         FormLayout formLayout = new FormLayout(comboBoxTeams, comboBoxBet,textFieldAmount, buttonCreateBet);
 
         buttonShowMatches.addClickListener(event -> {
-            matches.addAll(matchClient.getMatches());
-            gridMatch.setItems(matches);             //zle pokazuje v1 x v2 - zle przypisuje prawdopodobienstwo
+            matches.addAll(matchClient.getMatches(comboBoxLeagues.getValue()));
+            gridMatch.setItems(matches);
             for (MatchDto match : matches) {
                 homeVsAway.add(match.getHomeTeam() + " vs " + match.getAwayTeam());
             }
@@ -60,7 +72,7 @@ public class MatchesView extends HorizontalLayout {
         buttonCreateBet.addClickListener(event -> {
             String team[] = comboBoxTeams.getValue().split(" vs ");
 
-            chosenMatch = matchClient.getMatches().stream()
+            chosenMatch = matchClient.getMatches(comboBoxLeagues.getValue()).stream()
                     .filter(matchDto1 -> matchDto1.getHomeTeam().equals(team[0]))
                     .findAny().get();
 
