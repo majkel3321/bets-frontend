@@ -21,7 +21,7 @@ public class UserClient {
     private UserDto loggedUser;
 
     public List<UserDto> getUsers() {
-        UserDto[] usersResponse = restTemplate.getForObject("http://localhost:8080/user/getUsers", UserDto[].class);
+        UserDto[] usersResponse = restTemplate.getForObject("http://localhost:8080/user/all", UserDto[].class);
         return Arrays.asList(usersResponse);
     }
 
@@ -41,7 +41,7 @@ public class UserClient {
     }
 
     public UserDto getLoggedUser(){
-        loggedUser = restTemplate.getForObject("http://localhost:8080/user/getLoggedUser", UserDto.class);
+        loggedUser = restTemplate.getForObject("http://localhost:8080/user/logged", UserDto.class);
         return loggedUser;
     }
 

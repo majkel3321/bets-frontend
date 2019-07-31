@@ -6,6 +6,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class BetClient {
 
@@ -37,6 +40,11 @@ public class BetClient {
 
     private void submitBetDto(BetDto betDto){
         HttpEntity<BetDto> entity = new HttpEntity<>(betDto);
-        restTemplate.postForObject("http://localhost:8080/bet/createBet",entity,BetDto.class);
+        restTemplate.postForObject("http://localhost:8080/bet/create",entity,BetDto.class);
+    }
+
+    public List<BetDto> getBets(){
+        BetDto[] bets = restTemplate.getForObject("http://localhost:8080/bet/all",BetDto[].class);
+        return Arrays.asList(bets);
     }
 }
