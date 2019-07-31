@@ -28,7 +28,7 @@ public class UserClient {
     public void createUser(String username, String password, String email) {
         UserDto userDto = new UserDto(username, password, email);
         HttpEntity<UserDto> entity = new HttpEntity<>(userDto);
-        restTemplate.postForObject("http://localhost:8080/user/createUser", entity, Void.class);
+        restTemplate.postForObject("http://localhost:8080/user/create", entity, Void.class);
     }
 
     public void logIn(String username, String password) {
@@ -57,7 +57,7 @@ public class UserClient {
         String url = "http://localhost:8080/user/updateBalance";
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url)
                 .queryParam("userId",userId)
-                .queryParam("amount",amount);
+                .queryParam("amount",(amount * -1));
 
         restTemplate.put(builder.toUriString(),Boolean.class);
     }
